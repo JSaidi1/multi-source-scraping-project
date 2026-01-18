@@ -15,7 +15,28 @@ def log_message(
     console_log: bool = True,
     debug_mode: bool = False
 ) -> None:
+    """
+    Log a message with dynamic configuration per call.
 
+    This function logs a message at the specified severity level and
+    dynamically configures logging handlers on each invocation. Depending
+    on the provided flags, the message can be sent to the console, a log
+    file, or both.
+
+    When `debug_mode` is enabled, the logger and handlers are set to DEBUG
+    level and the caller's file name and line number are appended to the
+    log message.
+
+    Parameters:
+        `level` (LOGLEVEL): Log severity level ("debug", "info", "warning", "error", "critical").
+        `msg_log` (str): The message to be logged.
+        `file_log` (bool): If True, log the message to a file located at LOG_FOLDER_PATH / LOG_FILE_NAME.
+        `console_log` (bool): If True, log the message to the console.
+        `debug_mode` (bool): If True, enable DEBUG level logging and append caller file and line information to the message.
+
+    Returns:
+        None
+    """
     if file_log or console_log:
         level = level.lower()
         logger = logging.getLogger("app_logger")
