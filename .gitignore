@@ -221,3 +221,6 @@ __marimo__/
 
 # logs folder
 **/logs
+
+# minio storage
+**/minio_local_storage
