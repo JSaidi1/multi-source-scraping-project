@@ -23,14 +23,14 @@ services:
   # === Service: Data base (postgres)
   db:
     image: postgres
-    container_name: local_pgdb
+    container_name: ${LOCAL_PGDB_HOST}
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     restart: always
     ports:
-      - 5432:5432
+      - 5433:5432
     volumes:
       ## Persistent database data
       - local_pgdata:/var/lib/postgresql
