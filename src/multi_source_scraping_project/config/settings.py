@@ -1,6 +1,11 @@
+"""
+Centralized project configuration.
+Uses environment variables.
+"""
+
 import os
 from dataclasses import dataclass, field
-from typing import List, Tuple
+from typing import Tuple
 
 from dotenv import find_dotenv, load_dotenv
 
@@ -159,15 +164,25 @@ class MinIOConfig:
         )
     ))
 
-
+# =======================================================================================================
+#                                             SCRAPER CONFIG.
+# =======================================================================================================
+@dataclass
+class ScraperConfig:
+    base_url_quotes:str = "https://quotes.toscrape.com"
+    delay: float = 1.0
+    timeout: int = 30
+    max_retries: int = 3
+    max_pages: int = 20
 
 # --- Create a singleton config object
 app_cfg = AppConfig()
 data_base_cfg = DataBaseConfig()
 minio_cfg = MinIOConfig()
-
+scraper_config = ScraperConfig()
 
 if __name__ == "__main__":
     print(app_cfg)
     print(data_base_cfg)
     print(minio_cfg)
+    print(scraper_config)
